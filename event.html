@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .outer {
+            width:200px;
+            height:200px;
+            background-color: red;
+        }
+
+        .inner {
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div @click="doTop" class="outer">
+            <div @click.self.stop="doMiddle" class="inner">
+                <button @click.right.prevent="doLast">이벤트!</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                
+            },
+            methods:{
+                submit() {
+                    console.log("서브밋");
+                },
+                doTop() {
+                    console.log("적색 DIV 이벤트");
+                },
+                doMiddle() {
+                    console.log("파랑 DIV 이벤트");
+                },
+                doLast() {
+                    console.log("버튼 이벤트")
+                }
+            }
+        });
+    </script>
+</body>
+</html>

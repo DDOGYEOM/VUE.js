@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .outer {
+            width:200px;
+            height:200px;
+            background-color: red;
+        }
+
+        .inner {
+            width:100px;
+            height:100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>{{ cnt }}</p>
+        <p>{{ msg }}</p>
+        <button @click.once="inc(2, `안녕하세요`, $event)">증가</button>
+    </div>
+    <!-- tab, delete, esc, space, up, down, left, right -->
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                cnt:0,
+                msg:'Hello world'
+            },
+            methods:{
+                link(){
+                    console.log("링크 클릭");
+                },
+                inc(value, msg, e){
+                    this.cnt += value;
+                    this.msg = msg;
+                    console.log(event);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
